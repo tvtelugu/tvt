@@ -1,0 +1,221 @@
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    background-image: url("https://eskipaper.com/images/bubble-wallpaper-15.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    /* Made By Captain */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Header styles */
+.header {
+    display: flex;
+    justify-content: center;
+    /* Center the header content */
+    align-items: center;
+    padding: 20px;
+    backdrop-filter: blur(100px);
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 100px;
+    /* Made By Captain */
+    color: #fff;
+    margin-top: 5px;
+}
+
+.brand h3 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.links {
+    margin-left: auto;
+}
+
+/* Center the section title */
+.no-items.section {
+    text-align: center;
+    font-size: 2em;
+    margin: 20px 0;
+    color: #333;
+}
+/* Made By Captain */
+/* Center the search bar container */
+.search-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    flex-direction: column;
+}
+/* Made By Captain */
+.new {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Made By Captain */
+/* Style the search input */
+.fin {
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    width: 50%;
+    /* Make the search bar smaller */
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+    margin-top: 10px;
+}
+/* Captain */
+.fin:focus {
+    outline: none;
+    background-color: #eee;
+}
+
+/* Style the search button */
+#search-btn {
+    background-color: #ffffff;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 10px 15px;
+    /* Make the button smaller */
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    margin-left: -50px;
+    margin-top: 10px;
+}
+
+#search-btn:hover {
+    background-color: #2c3e50;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Made By Captain */
+
+/* Style for channel grid items */
+/* Site grid styles */
+/* Channel grid item styles */
+.tvv-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* Adjust as needed */
+}
+
+.tvv-item {
+    flex: 0 0 calc(25% - 20px);
+    /* Adjust width to account for the gap */
+    margin: 8px;
+    display: inline-flex;
+    /* Use inline-flex to apply gap */
+    /* Made By Captain */
+    gap: 20px;
+    /* Add gap between items */
+    border-radius: 12px;
+    /* Rounded border */
+    overflow: hidden;
+    /* Ensure the border radius is applied properly */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px 5px rgba(0, 0, 0, 0.1);
+    /* Perfect shadow */
+
+    background: transparent;
+    backdrop-filter: blur(9px);
+/* Made By Captain */
+    border: 2px solid rgba(255, 255, 255, .2);
+
+
+}
+
+/* Made By Captain */
+/* Site card styles */
+.tvv-thumb {
+    backdrop-filter: blur(9px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    max-width: 150px;
+    /* Set a maximum width for the site card */
+    margin: auto;
+    /* Center the site card within its container */
+    padding: 9px;
+
+}
+
+.tvv-thumb:hover {
+    transform: scale(1.05);
+
+}
+
+.tvv-thumb img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+
+}
+
+.tvv-name {
+    padding: 10px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.tvv-name h2 {
+    font-size: 0.8em;
+    /* Adjust font size */
+    margin: 0;
+}
+/* Made By Captain */
+
+/* Style for the dropdown menu */
+nav {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#channel-dropdown {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+    /* Made By Captain */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+#channel-dropdown:focus {
+    outline: none;
+    background-color: #eee;
+}
+
+/* Media Query for Small Screens */
+@media only screen and (max-width: 600px) {
+    .tvv-item {
+        width: calc(50% - 20px);
+        /* Adjust width for small screens */
+    }
+/* Made By Captain */
+    /* Adjust search bar styles for small screens */
+    .fin {
+        width: 60%;
+    }
+
+    #search-btn {
+        width: auto;
+        padding: 10px 15px;
+    }
+}
+/* Made By Captain */

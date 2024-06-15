@@ -1,0 +1,214 @@
+
+  <!-- Credit to Denver -->
+  <!-- Credit to CodeCrafter -->
+<!DOCTYPE html>
+<html> 
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TATA PLAY</title>
+  <link rel="shortcut icon" type="image/x-icon" href="https://yt3.googleusercontent.com/72uWDy4tWLmUXeLH9TiRXy-NjRZnYfMHLiqUbZParNUJibmXTiptyDpuh1RnhbHx9op1ITS2wg=s900-c-k-c0x00ffffff-no-rj">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Compiled and minified CSS -->
+  <style>body {background:black;}</style>  
+  <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.5/lazysizes.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script> 
+  <link rel="stylesheet" crossorigin href="style.css">
+<script disable-devtool-auto='true' src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+</head>
+<body>
+ 
+<div class="header">
+    <div class="brand">
+        <h3>TATA PLAY</h3>
+    </div>
+    <div class="links" id="drop">
+        <!-- Add any additional links or navigation items here -->
+    </div>
+</div>
+
+<div class="new">
+    <input type="text" class="fin" placeholder="Search...">
+
+</div>
+
+        <nav>
+  <select id="channel-dropdown" onchange="changeChannelGroup()">
+  	<option value="All">All</option>
+<option value="Entertainment">Entertainment</option>
+<option value="Movies">Movies</option>
+<option value="Sports">Sports</option>
+<option value="Music">Music</option>
+<option value="News">News</option>
+<option value="English News">English News</option>  
+<option value="Kids">Kids</option>
+<option value="Knowledge">Knowledge</option>
+<option value="Lifestyle">Lifestyle</option>
+<option value="Bengali">Bengali</option>
+<option value="Gujarati">Gujarati</option>
+<option value="Hindi">Hindi</option>
+<option value="Kannada">Kannada</option>
+<option value="Malayalam">Malayalam</option>
+<option value="Marathi">Marathi</option>
+<option value="Odia">Odia</option>
+<option value="Others">Others</option>
+<option value="Punjabi">Punjabi</option>
+<option value="Tamil">Tamil</option>
+<option value="Telugu">Telugu</option>
+<option value="shopping">shopping</option>
+<option value="Spiritual">Spiritual</option>
+<option value="Null">Null</option>
+<option value="Uncategorized">Uncategorized</option>
+            </select>
+        </nav>
+	
+
+
+<!--- fitch the channel data from json --->
+<div id="channel-container"></div>
+
+</div>
+
+
+<!-- Compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.1.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+	$(document).ready(function(){
+            $("#menuimg").click(function(){
+               $("#drop").slideToggle("fast"); 
+            });
+        });
+	</script>
+	
+	<!------------------JAVA SCRIPT-------------------->
+		
+	<script>
+$(document).ready(function() { var dftr = $('select.dftr'), headerCount = $('#headerCount'); headerCount.html('select a filter or use search'); dftr.on('change', function() { dftr.attr('disabled', 'disabled'); var records = $('#tvvTable').find('.tvv-item'); records.hide(); var critriaAttributes = []; dftr.each(function() { var $this = $(this), $selectedLength = $this.find(':selected').length, $critriaAttribute = ''; if ($selectedLength > 0 && $this.val() != '0') { if ($selectedLength == 1) { $critriaAttribute += '[data-' + $this.data('attribute') + '*="' + $this.val() + '"]'; } else { var $startDataAttribute = '[data-' + $this.data('attribute') + '*="', $endDataAttribute = '"]', $selectedValues = $this.val().toString(); $critriaAttribute += $startDataAttribute + $selectedValues.replaceAll(',', ($endDataAttribute + ',' + $startDataAttribute)) + $endDataAttribute; } critriaAttributes.push($critriaAttribute); } }); var $showRecords = records; if (critriaAttributes.length > 0) { $.each(critriaAttributes, function(i, filterValue) { $showRecords = $showRecords.filter(filterValue); }); } $showRecords.show(); headerCount.html($showRecords.length + ' channels filtered'); dftr.removeAttr('disabled'); $(".fin").val(''); }); $(".fin").keyup(function() { var filter = $(this).val(), count = 0; $('select.dftr').prop('selectedIndex',0); $(".tvv-item").each(function() { if ($(this).text().search(new RegExp(filter, "i")) < 0) { $(this).fadeOut(); } else { $(this).show(); count++; } }); }); }); 
+</script>
+
+
+    <script>
+    // Function to fetch JSON data asynchronously
+async function fetchData() {
+    const response = await fetch('channel.json');
+    const jsonData = await response.json();
+
+    // Now you have your JSON data
+    return jsonData;
+}
+
+// Function to change channel group
+async function changeChannelGroup() {
+    var selectedValue = $("#channel-dropdown").val();
+    $(".tvv-item").hide();
+
+    // Fetch JSON data
+    const jsonData = await fetchData();
+
+    // Filter the items based on JSON data
+    for (var i = 0; i < jsonData.length; i++) {
+        var item = jsonData[i];
+        if (selectedValue === "All" || item.channel_genre === selectedValue) {
+            $(".tvv-item:has(.tvv-name:contains('" + item.channel_name + "'))").show();
+        }
+    }
+}
+
+// Initial fetch when the page loads
+fetchData();
+</script>
+<script>
+        // Function to fetch and display channels
+        async function fetchAndDisplayChannels() {
+            try {
+                // Fetch the JSON data from the external file
+                const response = await fetch('channel.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const channels = await response.json();
+
+                // Get the container where the channels will be appended
+                const container = document.getElementById('channel-container');
+
+                // Iterate through each channel in the JSON data
+                channels.forEach(channel => {
+                    // Create a div element with the class "tvv-item"
+                    const tvvItem = document.createElement('div');
+                    tvvItem.className = 'tvv-item';
+
+                    // Create the anchor element
+                    const anchor = document.createElement('a');
+                    anchor.href = `play.html?id=${channel.channel_id}`;
+                    anchor.className = 'tvv-thumb';
+
+                    // Create the image element
+                    const img = document.createElement('img');
+                    img.className = 'lazyload';
+                    img.setAttribute('data-src', channel.channel_logo);
+                    img.style.height = '150px';
+
+                    // Create the card div
+                    const card = document.createElement('div');
+                    card.className = 'card-';
+
+                    // Create the name div
+                    const nameDiv = document.createElement('div');
+                    nameDiv.className = 'tvv-name';
+                    nameDiv.textContent = channel.channel_name;
+
+                    // Append the name div to the card div
+                    card.appendChild(nameDiv);
+
+                    // Append the image and card div to the anchor element
+                    anchor.appendChild(img);
+                    anchor.appendChild(card);
+
+                    // Append the anchor to the tvv-item div
+                    tvvItem.appendChild(anchor);
+
+                    // Append the tvv-item div to the container
+                    container.appendChild(tvvItem);
+                });
+            } catch (error) {
+                console.error('Error fetching the JSON data:', error);
+            }
+        }
+
+        // Call the function to fetch and display channels
+        fetchAndDisplayChannels();
+    </script>
+    
+<script>
+  window.onload = function() {
+  var puURL = '#';
+  var puTS = Math.round(+new Date()/1000);
+  console.log('T.'+localStorage.puTS+'/'+puTS);
+  if (typeof localStorage.puTS == 'undefined' || parseInt(localStorage.puTS) <= (puTS - 3600)) {
+    var links = document.getElementsByTagName('a');
+    for(var i = 0, len = links.length; i < len; i++) {
+      links[i].onclick = function (e) {
+        var puHref = this.getAttribute("href");
+          var puTarget = this.getAttribute("target");
+          if (puHref !== '#' && puHref !== 'javascript:void(0)') {
+          e.preventDefault();    
+          if (puTarget == '_blank') {
+            window.open(window.location.href);
+          }
+          window.open(puHref);
+          window.location.href = puURL;
+          localStorage.puTS = puTS;
+        }
+      }
+    }
+  }
+};
+    
+</script>
+<center>
+</body>
+</html>
