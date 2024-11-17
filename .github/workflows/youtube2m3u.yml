@@ -2,7 +2,7 @@ name: Youtube to M3U
 
 on:
   schedule:
-    - cron: '*/3 * * * *'
+    - cron: '*/3 * * * *' # Run every 3 hours
   pull_request:
     branches:
       - main
@@ -30,6 +30,9 @@ jobs:
           ./run.sh
 
       - name: Commit and push updated playlist
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git add -A
-          git diff-index --quiet HEAD || (git commit -m "Updated M3U playlist" && git push)
+          git diff-index --quiet HEAD || (git commit -m "Updated M3U playlist" && \
+          git push https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git)
