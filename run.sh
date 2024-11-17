@@ -1,11 +1,15 @@
 #!/bin/bash
+set -e  # Exit on error
 
-echo $(dirname $0)
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-python3 -m pip install requests
+echo "Running from: $BASE_DIR"
 
-cd $(dirname $0)/scripts/
+# Install dependencies
+python3 -m pip install --upgrade pip requests
 
-python3 main.py > ../youtube.m3u
+# Change directory to scripts and run Python script
+cd "$BASE_DIR/scripts"
+python3 main.py > "$BASE_DIR/youtube.m3u"
 
-echo "Done"
+echo "Playlist generation complete."
